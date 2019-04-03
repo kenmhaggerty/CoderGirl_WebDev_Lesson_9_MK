@@ -8,38 +8,43 @@
 
 // Set a secret word!
 
-var word = 'ANSWER'; // ALL CAPS
+var word = 'AMAZEBALLS'; // ALL CAPS
 
 // Ask player if they would like to guess a letter or guess the
 // solution.
+console.log("Would you like to guess a letter or solve the puzzle?");
 
-var isGuessingLetter = true; // set to false to guess solution
-
-// If they are guessing a letter, set the letter that they are
-// guessing.
-
-var letter = 'A'; // UPPERCASE
+var isGuessingLetter = false; // set to false to guess solution
 
 // SCRIPT ////////////////////////////////////////////////////////////
 
-// If guessing a letter...
+//if isGuessingLetter = true
+var letter = ''; // UPPERCASE
+//else
+var wordGuess = 'AMAZEBALLS';
+//for populating letter in word
+var puzzle = '';
 
-	// If the word contains the letter...
+isGuessingLetter ? console.log(`Please choose a letter: ${letter}`) : console.log(`Please solve the puzzle: ${wordGuess}`);
 
-		// Print back the word with all instances of that letter revealed.
-
-	// If the word does not contain the letter...
-
-		// Print back "Sorry, no <letter>!" but with <letter> replaced by the player's guess.
-
-// If guessing the word...
-
-	// If they are correct...
-
-		// Print "Congratulations! You won Wheel Of Fortune!"
-
-	// If they are incorrect...
-
-		// Print back "Nope, keep trying!"
+if (isGuessingLetter && letter != "") {
+	var count = 0;
+	if (word.includes(letter)) {
+		for (var i = 0; i < word.length; i++) {
+			if (word[i] === letter) {
+				count ++;
+				puzzle += letter;
+			} else {
+				puzzle += "_";			
+			}
+		}
+		count > 1 ? console.log(`${puzzle}\nThere are ${count} "${letter}"s.`) : console.log(`${puzzle}\nThere is ${count} "${letter}".`) 
+	} else {
+		console.log(`Sorry, no "${letter}"s.`);
+	}
+} else {
+	wordGuess === word ?
+		console.log("Congratulations! You won Wheel Of Fortune!") : console.log("Nope, keep trying!");
+}
 
 // End of script!
